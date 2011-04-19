@@ -1,1 +1,77 @@
-My GitHub Page
+
+<html>
+
+<head>
+
+	<title>Live Search Demo</title>
+
+	<script type="text/javascript" src="http://jherm.github.com/livesearch/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="http://jherm.github.com/livesearch/jquery.livesearch.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$("#searchbox1").livesearch({
+				searchCallback: searchFunction1
+			});
+	
+			function searchFunction1(searchTerm) {
+				$("#results1").append("<br/>" + (searchTerm == "" ? "(empty)" : searchTerm));
+			}
+
+
+			$("#searchbox2").livesearch({
+				searchCallback: searchFunction2,
+				innerText: "Custom Default Text",
+				queryDelay: 250,
+				minimumSearchLength: 1
+			});
+	
+			function searchFunction2(searchTerm) {
+				$("#results2").append("<br/>" + (searchTerm == "" ? "(empty)" : searchTerm));
+			}
+		});
+
+	</script>
+</head>
+<body>
+	<h1>Live Search Demo</h1>
+	<p>Start typing in one of the text boxes below.</p>
+	<p>Notice the features:</p>
+
+	<dl>
+		<dt><b>Query Delay</b></dt><dd>Only executes the callback after a delay (default is 250ms) so that fast typers won't drown your website with too many calls.</dd>
+
+		<dt><b>Minimum Search Length</b></dt><dd>Specify a minimum search length (default is 3 characters) so that your system doesn't get incomplete and broad searches.</dd>
+		
+		<dt><b>Initial text</b></dt><dd>Display initial text (default is "Search") that is automatically cleared when a user focuses on the text input.<br/>Style this by using the class "inactive_search".</dd>
+
+		<dt><b>Multiple Instances</b></dt><dd>This plugin written so that you can have multiple live search text inputs on the same page.</dd>
+	</dl>
+
+	<table width="100%">
+		<tr>
+			<td>
+				A live search box with default parameters
+			</td>
+			<td>
+				A live search box with custom default text, 1 character minimum and shorter key delay
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input id="searchbox1" type="text" />
+			</td>
+			<td>
+				<input id="searchbox2" type="text" />
+			</td>
+		</tr>
+		<tr valign="top">
+			<td>
+				<div id="results1"></div>
+			</td>
+			<td>
+				<div id="results2"></div>
+			</td>
+		</tr>
+</table>
+</body>
+</html>
