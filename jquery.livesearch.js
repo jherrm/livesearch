@@ -17,11 +17,6 @@
 				Specify a minimum search length (default is 3 characters) so that 
 				your system doesn't get incomplete and broad searches.
 
-			Initial text:
-				Display initial text (default is "Search") that is automatically 
-				cleared when a user focuses on the text input.
-				Style this by using the class "inactive_search".
-
 			Multiple Instances:
 				This plugin written so that you can have multiple live search text 
 				inputs on the same page.
@@ -31,7 +26,6 @@
 		$('#textfield').livesearch({
 			searchCallback: searchFunction,
 			queryDelay: 250,
-			innerText: "Search",
 			minimumSearchLength: 3
 		});
 
@@ -93,33 +87,6 @@
 			settings.searchCallback(searchTerm);
 		};
 
-		if (element.val() == "" || element.val() == settings.innerText) {
-			disableSearch();
-		}
-		else {
-			enableSearch();
-		}
-		
-		element.focus(function() {
-			if (element.hasClass("inactive_search")) { enableSearch(); }
-		});
-
-		element.blur(function() {
-			if (element.val() == "") { disableSearch(); }
-		});
-
-		function enableSearch() {
-			element.addClass("active_search");
-			element.removeClass("inactive_search");
-			element.val("");
-		};
-
-		function disableSearch() {
-			element.addClass("inactive_search");
-			element.removeClass("active_search");
-			element.val(settings.innerText);
-		};
-
 	};
 
 	$.fn.livesearch = function(options)
@@ -142,7 +109,6 @@
 
 	$.fn.livesearch.defaults = {
 		queryDelay: 250,
-		innerText: "Search",
 		minimumSearchLength: 3
 	};
 
